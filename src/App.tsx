@@ -22,6 +22,27 @@ export default function App() {
   const [secretCode, setSecretCode] = useState('');
   const [secretError, setSecretError] = useState(false);
 
+  // Falling hearts background animation overlay
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'fixed pointer-events-none z-20 text-rose-500/40 select-none animate-fall';
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.top = `-20px`;
+      heart.style.fontSize = `${Math.random() * 18 + 12}px`;
+      heart.style.animationDuration = `${Math.random() * 6 + 4}s`;
+      heart.style.animationTimingFunction = 'linear';
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }, 450);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const galleryRef = useRef<HTMLDivElement>(null);
   const [isGalleryPaused, setIsGalleryPaused] = useState(false);
 
