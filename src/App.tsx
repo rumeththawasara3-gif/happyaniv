@@ -87,6 +87,39 @@ export default function App() {
     "https://res.cloudinary.com/esbq4ewb/image/upload/v1794972624/WhatsApp_Image_2026-11-18_at_8.34.17_AM.jpg"
   ];
 
+  const romanticPhrases = [
+    "Late night calls 🌙",
+    "First smile ✨",
+    "Endless talks 💫",
+    "Our favorite spot ☕",
+    "Unforgettable 🤍",
+    "Pure magic ✨",
+    "Counting stars 🌟",
+    "Forever us 🥂",
+    "Sweet glances 👀",
+    "Our little secret 🤫",
+    "Stolen moments 💕",
+    "Always together 🌹",
+    "Laughing aloud 😂",
+    "Sweetest comfort 🧸",
+    "My safe place 🏡",
+    "Magical days 🪄",
+    "Hand in hand 🤝",
+    "Deepest thoughts 💭",
+    "Warmest hugs 🤗",
+    "Precious times ⏳",
+    "Infinite joy ☀️",
+    "Best adventure 🗺️",
+    "Dreaming of you 💭",
+    "Endless warmth 🔥",
+    "Simply perfect 🌸",
+    "My favorite person 👑",
+    "Treasured smiles 😁",
+    "Heartfelt whispers 🍃",
+    "Unconditional love 💞",
+    "A million memories 🎞️"
+  ];
+
   useEffect(() => {
     const container = galleryRef.current;
     if (!container) return;
@@ -523,19 +556,19 @@ export default function App() {
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {[...galleryPhotos, ...galleryPhotos].map((photo, idx) => {
-                const actualIndex = (idx % galleryPhotos.length) + 1;
+                const phrase = romanticPhrases[(idx * 7) % romanticPhrases.length];
                 return (
                   <div 
                     key={idx} 
                     className="flex-shrink-0 w-72 md:w-80 h-[450px] rounded-3xl overflow-hidden bg-neutral-900/90 border border-rose-500/30 shadow-2xl hover:border-rose-500/60 hover:scale-[1.02] transition-all duration-300 relative group flex flex-col"
                   >
                     <div className="absolute top-4 left-4 z-20 px-3.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-rose-500/40 text-rose-300 text-xs font-semibold tracking-wider shadow-lg">
-                      Memory {actualIndex}
+                      {phrase}
                     </div>
                     <div className="w-full h-full relative overflow-hidden">
                       <img 
                         src={photo} 
-                        alt={`Memory ${actualIndex}`} 
+                        alt={phrase} 
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                       />
