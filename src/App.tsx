@@ -22,6 +22,69 @@ export default function App() {
   const [secretCode, setSecretCode] = useState('');
   const [secretError, setSecretError] = useState(false);
 
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [isGalleryPaused, setIsGalleryPaused] = useState(false);
+
+  const galleryPhotos = [
+    "/public/assets/aistudio/IMG-20231219-WA0008_8865014a.jpg",
+    "/public/assets/aistudio/IMG-20240327-WA0008_59fafe83.jpg",
+    "/public/assets/aistudio/IMG-20240409-WA0003_cf2d4848.jpg",
+    "/public/assets/aistudio/IMG-20240411-WA0016_b73f7061.jpg",
+    "/public/assets/aistudio/IMG-20240411-WA0020_e9405e69.jpg",
+    "/public/assets/aistudio/IMG-20240614-WA0022_18cb185d.jpg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.17_AM__1__6ad431aa.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.17_AM_3bbc66ba.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.18_AM__1__5b108930.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.18_AM__2__f467b3e4.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.18_AM_4ba7be81.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.27_AM__1__d059394e.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.27_AM_ef26e15d.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.28_AM_cc1b8047.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.29_AM__1__01b04c27.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.29_AM_fd51ccbe.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.30_AM__1__b84e1476.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.30_AM__2__fd2cca72.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.30_AM_bb042581.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.38_AM__1__d083eb8b.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.38_AM__2__92f58cc1.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.38_AM_8298c266.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.39_AM__1__376515f3.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.39_AM_02e46494.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.40_AM__1__b045dc12.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.40_AM_81a14f34.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.41_AM__1__f5a2f16c.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.41_AM_d8d7878c.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.42_AM__1__8ed871e1.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.42_AM_27e3a872.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.43_AM__1__93c05d16.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.43_AM__2__983f1668.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.43_AM_093ef5f7.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.44_AM__1__277de29e.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.44_AM_b7b97a7e.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.45_AM__1__2287e41e.jpeg",
+    "/public/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.45_AM_27022fea.jpeg"
+  ];
+
+  useEffect(() => {
+    const container = galleryRef.current;
+    if (!container) return;
+    let animationFrameId: number;
+    let scrollSpeed = 0.7;
+
+    const step = () => {
+      if (!isGalleryPaused && container) {
+        container.scrollLeft += scrollSpeed;
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(step);
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isGalleryPaused]);
+
   // Audio ref for ambient magical background music
   const audioCtxRef = useRef<AudioContext | null>(null);
   const isAudioRunningRef = useRef(false);
@@ -406,6 +469,56 @@ export default function App() {
             </p>
           </div>
         </div>
+
+        {/* Dedicated Horizontal Photo Gallery Section */}
+        <section className="max-w-7xl mx-auto px-6 mt-28">
+          <div className="text-center space-y-3 mb-12">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium tracking-widest uppercase">
+              <Sparkles className="w-3.5 h-3.5" /> Our Journey in Memories
+            </span>
+            <h2 className="text-3xl md:text-5xl font-['Cinzel'] font-bold bg-gradient-to-r from-white via-rose-100 to-rose-300 bg-clip-text text-transparent">
+              Moments We Cherish Together
+            </h2>
+            <p className="text-neutral-400 text-sm md:text-base font-light max-w-xl mx-auto">
+              Swipe or let the magical auto-scroll guide you through every beautiful snapshot of our story.
+            </p>
+          </div>
+
+          <div 
+            className="relative w-full overflow-hidden py-4"
+            onMouseEnter={() => setIsGalleryPaused(true)}
+            onMouseLeave={() => setIsGalleryPaused(false)}
+            onTouchStart={() => setIsGalleryPaused(true)}
+            onTouchEnd={() => setIsGalleryPaused(false)}
+          >
+            {/* Gradient Fade Edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#05050a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#05050a] to-transparent z-10 pointer-events-none" />
+
+            <div 
+              ref={galleryRef}
+              className="flex gap-6 overflow-x-auto scrollbar-none px-4 py-2 select-none"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {[...galleryPhotos, ...galleryPhotos].map((photo, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex-shrink-0 w-72 md:w-80 h-[420px] rounded-3xl overflow-hidden bg-neutral-900/80 border border-rose-500/20 shadow-2xl hover:border-rose-500/50 hover:scale-[1.02] transition-all duration-300 relative group"
+                >
+                  <img 
+                    src={photo} 
+                    alt={`Memory ${idx + 1}`} 
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                    <span className="text-xs text-rose-200 tracking-wider font-['Cinzel']">✨ Memory #{idx + 1}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* 3. Locked Secret Love Letter Section (Appearing directly after Our Journey / Story) */}
         <div id="love-letter" className="max-w-xl mx-auto px-6 mt-36 scroll-mt-32">

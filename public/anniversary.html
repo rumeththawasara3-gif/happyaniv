@@ -288,6 +288,40 @@
       </div>
     </div>
 
+    {/* Dedicated Horizontal Photo Gallery Section */}
+    <section class="max-w-7xl mx-auto px-6 mt-28">
+      <div class="text-center space-y-3 mb-12">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium tracking-widest uppercase">
+          ✨ Our Journey in Memories
+        </span>
+        <h2 class="text-3xl md:text-5xl font-cinzel font-bold bg-gradient-to-r from-white via-rose-100 to-rose-300 bg-clip-text text-transparent">
+          Moments We Cherish Together
+        </h2>
+        <p class="text-neutral-400 text-sm md:text-base font-light max-w-xl mx-auto">
+          Swipe or let the magical auto-scroll guide you through every beautiful snapshot of our story.
+        </p>
+      </div>
+
+      <div 
+        class="relative w-full overflow-hidden py-4"
+        onmouseenter="isGalleryPaused = true"
+        onmouseleave="isGalleryPaused = false"
+        ontouchstart="isGalleryPaused = true"
+        ontouchend="isGalleryPaused = false"
+      >
+        <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#05050a] to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#05050a] to-transparent z-10 pointer-events-none"></div>
+
+        <div 
+          id="galleryContainer"
+          class="flex gap-6 overflow-x-auto scrollbar-none px-4 py-2 select-none"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <!-- Gallery photos populated via script -->
+        </div>
+      </div>
+    </section>
+
     <!-- 3. Locked Secret Love Letter Section (Appearing directly after Our Journey / Story) -->
     <div id="love-letter" class="max-w-xl mx-auto px-6 mt-36 scroll-mt-32 reveal-on-scroll">
       <div class="magic-card rounded-3xl p-8 md:p-12 shadow-2xl">
@@ -379,7 +413,48 @@
   </footer>
 
   <script>
-    // Scroll Reveal Intersection Observer
+    // Scroll Reveal Intersection Observer & Gallery Auto-scroll
+    let isGalleryPaused = false;
+    const galleryPhotos = [
+      "/assets/aistudio/IMG-20231219-WA0008_8865014a.jpg",
+      "/assets/aistudio/IMG-20240327-WA0008_59fafe83.jpg",
+      "/assets/aistudio/IMG-20240409-WA0003_cf2d4848.jpg",
+      "/assets/aistudio/IMG-20240411-WA0016_b73f7061.jpg",
+      "/assets/aistudio/IMG-20240411-WA0020_e9405e69.jpg",
+      "/assets/aistudio/IMG-20240614-WA0022_18cb185d.jpg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.17_AM__1__6ad431aa.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.17_AM_3bbc66ba.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.18_AM__1__5b108930.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.18_AM__2__f467b3e4.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.18_AM_4ba7be81.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.27_AM__1__d059394e.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.27_AM_ef26e15d.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.28_AM_cc1b8047.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.29_AM__1__01b04c27.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.29_AM_fd51ccbe.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.30_AM__1__b84e1476.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.30_AM__2__fd2cca72.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.30_AM_bb042581.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.38_AM__1__d083eb8b.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.38_AM__2__92f58cc1.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.38_AM_8298c266.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.39_AM__1__376515f3.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.39_AM_02e46494.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.40_AM__1__b045dc12.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.40_AM_81a14f34.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.41_AM__1__f5a2f16c.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.41_AM_d8d7878c.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.42_AM__1__8ed871e1.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.42_AM_27e3a872.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.43_AM__1__93c05d16.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.43_AM__2__983f1668.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.43_AM_093ef5f7.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.44_AM__1__277de29e.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.44_AM_b7b97a7e.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.45_AM__1__2287e41e.jpeg",
+      "/assets/aistudio/WhatsApp_Image_2026-11-18_at_8.34.45_AM_27022fea.jpeg"
+    ];
+
     document.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -390,6 +465,30 @@
       }, { threshold: 0.15 });
 
       document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+      const container = document.getElementById('galleryContainer');
+      if (container) {
+        const doublePhotos = [...galleryPhotos, ...galleryPhotos];
+        container.innerHTML = doublePhotos.map((photo, idx) => `
+          <div class="flex-shrink-0 w-72 md:w-80 h-[420px] rounded-3xl overflow-hidden bg-neutral-900/80 border border-rose-500/20 shadow-2xl hover:border-rose-500/50 hover:scale-[1.02] transition-all duration-300 relative group">
+            <img src="${photo}" alt="Memory ${idx + 1}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+              <span class="text-xs text-rose-200 tracking-wider font-cinzel">✨ Memory #${(idx % galleryPhotos.length) + 1}</span>
+            </div>
+          </div>
+        `).join('');
+
+        const step = () => {
+          if (!isGalleryPaused && container) {
+            container.scrollLeft += 0.7;
+            if (container.scrollLeft >= container.scrollWidth / 2) {
+              container.scrollLeft = 0;
+            }
+          }
+          requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
     });
 
     // Passcode validation
