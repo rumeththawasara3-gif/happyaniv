@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -18,6 +18,7 @@
     }
     .font-cinzel { font-family: 'Cinzel', serif; }
     .font-sacramento { font-family: 'Sacramento', cursive; }
+    .font-poem { font-family: 'Great_Vibes', 'Great Vibes', cursive; }
 
     @keyframes nebulaShift {
       0% { transform: scale(1) translate(0, 0); opacity: 0.4; }
@@ -119,6 +120,11 @@
         <svg id="musicIcon" class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
         <span id="musicText">Play Enchanted Ambience</span>
       </button>
+
+      <nav class="hidden md:flex items-center gap-1 bg-neutral-900/60 p-1 rounded-full border border-neutral-800">
+        <a href="#chapter-1" class="px-4 py-1.5 rounded-full text-xs font-medium transition-all text-neutral-400 hover:text-white">Our Journey</a>
+        <a href="#love-letter" class="px-4 py-1.5 rounded-full text-xs font-medium transition-all text-neutral-400 hover:text-white">Love Letter</a>
+      </nav>
     </div>
   </header>
 
@@ -171,135 +177,120 @@
     <!-- 2. Chronological Story Chapters -->
     <div class="max-w-6xl mx-auto px-6 space-y-36 pt-20">
 
-      <!-- Chapter 1 -->
+      <!-- Chapter 1 (2019) -->
       <div id="chapter-1" class="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal-on-scroll">
         <div class="md:col-span-5 flex justify-center">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-tr from-rose-600/20 to-cyan-500/20 rounded-full blur-3xl opacity-70"></div>
-            <img src="/assets/aistudio/Gemini_Generated_Image__3_-removebg-preview_48486ef1.png" alt="image-grade6.png" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" />
+            <img src="/assets/aistudio/Gemini_Generated_Image__3_-removebg-preview_48486ef1.png" alt="Chapter 1 Illustration" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" />
           </div>
         </div>
         <div class="md:col-span-7 magic-card rounded-3xl p-8 md:p-12 space-y-6">
           <div class="flex items-center gap-3">
             <span class="px-3.5 py-1.5 rounded-full bg-rose-500/15 text-rose-300 text-xs font-semibold tracking-wide border border-rose-500/30">
-              2019 • Grade 6
+              2019
             </span>
-            <span class="text-xs text-neutral-400 font-mono">image-grade6.png</span>
           </div>
           <h2 class="text-3xl md:text-4xl font-cinzel font-bold text-white tracking-wide">
             An Unexpected Rivalry
           </h2>
           <p class="text-neutral-300 text-lg leading-relaxed font-light">
-            "Back in 2019, during Grade 6, our story began with an unexpected rivalry. You and your friends were the lively group, and to you, I was just part of a boisterous crowd. The school corridors were filled with distant glances and mutual hesitation, and neither of us could have ever imagined what would blossom from such frosty beginnings."
+            "Remember back in 2019 when we were in Grade 6? We started out as total rivals. You and your friends were always a lively group, and to you, I was just part of the noisy crowd. We would look at each other from a distance, and neither of us ever thought we would become what we are today."
           </p>
         </div>
       </div>
 
-      <!-- Chapter 2 -->
+      <!-- Chapter 2 (2020-2021) -->
       <div id="chapter-2" class="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal-on-scroll">
         <div class="md:col-span-7 magic-card rounded-3xl p-8 md:p-12 space-y-6 order-2 md:order-1">
           <div class="flex items-center gap-3">
             <span class="px-3.5 py-1.5 rounded-full bg-purple-500/15 text-purple-300 text-xs font-semibold tracking-wide border border-purple-500/30">
-              2020-2021 • COVID Lockdown
+              2020-2021
             </span>
-            <span class="text-xs text-neutral-400 font-mono">image-grade8.png</span>
           </div>
           <h2 class="text-3xl md:text-4xl font-cinzel font-bold text-white tracking-wide">
             From Distance to Confidantes
           </h2>
           <p class="text-neutral-300 text-lg leading-relaxed font-light">
-            "As time progressed, our dynamic naturally shifted into a meaningful friendship. Then came the challenges of the COVID-19 pandemic during 2020 and 2021. Amidst the global isolation, endless phone calls became our sanctuary. The girl who once kept her distance in the hallways became my closest confidante, and our bond grew profoundly stronger through those quiet, uncertain days."
+            "Then we slowly became good friends. Through 2020 and 2021, we stayed in touch with long phone calls. The girl who used to keep her distance in the school hallway became my favorite person to talk to every single day."
           </p>
         </div>
         <div class="md:col-span-5 flex justify-center order-1 md:order-2">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-rose-500/20 rounded-full blur-3xl opacity-70"></div>
-            <img src="/assets/aistudio/Gemini_Generated_Image__2_-removebg-preview_307a7f6b.png" alt="image-grade8.png" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" style="animation-delay: -1.5s;" />
+            <img src="/assets/aistudio/Gemini_Generated_Image__2_-removebg-preview_307a7f6b.png" alt="Chapter 2 Illustration" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" style="animation-delay: -1.5s;" />
           </div>
         </div>
       </div>
 
-      <!-- Chapter 3 -->
+      <!-- Chapter 3 (2022) -->
       <div id="chapter-3" class="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal-on-scroll">
         <div class="md:col-span-5 flex justify-center">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-tr from-amber-600/20 to-rose-600/20 rounded-full blur-3xl opacity-70"></div>
-            <img src="/assets/aistudio/Gemini_Generated_Image__1_-removebg-preview_aa3bde19.png" alt="image-grade9.png" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" style="animation-delay: -3s;" />
+            <img src="/assets/aistudio/Gemini_Generated_Image__1_-removebg-preview_aa3bde19.png" alt="Chapter 3 Illustration" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" style="animation-delay: -3s;" />
           </div>
         </div>
         <div class="md:col-span-7 magic-card rounded-3xl p-8 md:p-12 space-y-6">
           <div class="flex items-center gap-3">
             <span class="px-3.5 py-1.5 rounded-full bg-amber-500/15 text-amber-300 text-xs font-semibold tracking-wide border border-amber-500/30">
-              2022 • Grade 9
+              2022
             </span>
-            <span class="text-xs text-neutral-400 font-mono">image-grade9.png</span>
           </div>
           <h2 class="text-3xl md:text-4xl font-cinzel font-bold text-white tracking-wide">
             Persistence & A Soft Smile
           </h2>
           <p class="text-neutral-300 text-lg leading-relaxed font-light">
-            "By 2022, as we entered Grade 9, our connection had deepened far beyond friendship. Wanting to take that next step, I asked you out. The first time, you told me you weren't ready; the second time, you said yes, but not yet. Yet, I persisted, and on the third attempt, with a soft smile, you conceded that you could no longer pretend we were anything more than meant to be."
+            "By 2022, we were more than just friends. I asked you out. The first time, you said you were not ready. The second time, you said yes, but not yet. But I did not give up—and on the third try, with a sweet smile, you finally said yes."
           </p>
         </div>
       </div>
 
-      <!-- Chapter 4 -->
+      <!-- Chapter 4 (Present Day) -->
       <div id="chapter-4" class="scroll-mt-32 grid grid-cols-1 md:grid-cols-12 gap-12 items-center reveal-on-scroll">
         <div class="md:col-span-7 magic-card rounded-3xl p-8 md:p-12 space-y-6 order-2 md:order-1">
           <div class="flex items-center gap-3">
             <span class="px-3.5 py-1.5 rounded-full bg-rose-500/15 text-rose-300 text-xs font-semibold tracking-wide border border-rose-500/30">
-              Present Day • 3 Years Strong
+              Present Day
             </span>
-            <span class="text-xs text-neutral-400 font-mono">image-present.png</span>
           </div>
           <h2 class="text-3xl md:text-4xl font-cinzel font-bold text-white tracking-wide">
             Every Chapter Is My Greatest Treasure
           </h2>
           <p class="text-neutral-300 text-lg leading-relaxed font-light">
-            "Those hurdles and milestones have brought us gracefully to three wonderful years together. Even though strict school rules keep us apart today on our anniversary, our bond remains unshakable. From a quiet rivalry in Grade 6 to a deep friendship through lockdown, and a love that blossomed in Grade 9, every single chapter of our journey remains my greatest treasure."
+            "Look at us now, three happy years together! Even if strict school rules keep us apart today on our anniversary, nothing can change our love. From Grade 6 hallway glances to a love that started in Grade 9, every moment with you is my greatest treasure."
           </p>
         </div>
         <div class="md:col-span-5 flex justify-center order-1 md:order-2">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-tr from-rose-600/20 to-pink-500/20 rounded-full blur-3xl opacity-70"></div>
-            <img src="/assets/aistudio/Gemini_Generated_Image-removebg-preview_8ca95b7e.png" alt="image-present.png" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" style="animation-delay: -4.5s;" />
+            <img src="/assets/aistudio/Gemini_Generated_Image-removebg-preview_8ca95b7e.png" alt="Chapter 4 Illustration" class="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] floating-illustration" style="animation-delay: -4.5s;" />
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- 3. Closing Enchanted Note & Locked Love Letter Section -->
-    <section class="max-w-4xl mx-auto px-6 mt-40 space-y-20">
-      
-      <!-- Closing Note -->
-      <div class="relative overflow-hidden rounded-3xl magic-card p-12 md:p-16 text-center shadow-2xl reveal-on-scroll">
-        <div class="absolute top-0 right-0 w-80 h-80 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="relative z-10 space-y-8">
-          <div class="w-20 h-20 mx-auto rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shadow-inner text-3xl animate-pulse">
-            💖
-          </div>
-
-          <h3 class="text-4xl md:text-6xl font-cinzel font-bold text-white tracking-wide">
-            Happy 3rd Anniversary
-          </h3>
-
-          <p class="text-neutral-200 text-xl leading-relaxed font-light max-w-2xl mx-auto">
-            Even though strict rules keep us apart today, no distance or barrier can ever diminish what we share. Thank you for being my rock, my joy, and my greatest adventure. I love you more than words can say.
-          </p>
-
-          <div class="pt-6">
-            <a href="https://ig.me/m/rumeth_thawasara" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 text-white font-medium text-base shadow-xl shadow-rose-500/30 hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20">
-              <span>✨ Send Virtual Hug & Kiss 💖</span>
-            </a>
-          </div>
-        </div>
+    {/* Sinhala Poem Section Right After Main Story Text */}
+    <div class="max-w-2xl mx-auto px-6 mt-20">
+      <div class="poem-section text-center italic p-8 rounded-2xl bg-white/[0.03] border border-pink-300/20 backdrop-blur-md shadow-xl">
+        <p class="text-2xl md:text-3xl leading-relaxed text-pink-200 mb-6 font-['Great_Vibes'] tracking-wide">
+          නුඹ ලගින් සැමදා<br/>
+          ඉන්නටම පැතු,
+        </p>
+        <p class="text-2xl md:text-3xl leading-relaxed text-pink-200 mb-4 font-['Great_Vibes'] tracking-wide">
+          නිවෙමි මා නුඹ ගාව<br/>
+          ආදරිය "මෙතු"...
+        </p>
+        <p class="text-sm md:text-base text-slate-300 tracking-[2px] mt-6 font-['Cinzel']">
+          ~ තවසර ~
+        </p>
       </div>
+    </div>
 
-      <!-- Locked Secret Love Letter Section -->
-      <div class="max-w-xl mx-auto magic-card rounded-3xl p-8 md:p-12 shadow-2xl reveal-on-scroll">
+    <!-- 3. Locked Secret Love Letter Section (Appearing directly after Our Journey / Story) -->
+    <div id="love-letter" class="max-w-xl mx-auto px-6 mt-36 scroll-mt-32 reveal-on-scroll">
+      <div class="magic-card rounded-3xl p-8 md:p-12 shadow-2xl">
         <div id="letterLockContainer" class="space-y-6 text-center">
           <div class="w-14 h-14 mx-auto rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400">
             🔒
@@ -324,23 +315,61 @@
           </form>
         </div>
 
-        <div id="letterContentContainer" class="hidden space-y-6 font-serif">
+        <div id="letterContentContainer" class="hidden space-y-6">
           <div class="text-center pb-4 border-b border-rose-500/20">
             <span class="text-xs tracking-widest text-rose-400 uppercase font-sans">Unlocked Love Note</span>
-            <h3 class="text-2xl font-cinzel font-bold text-white mt-1">My Eternal Promise</h3>
+            <h3 class="text-2xl font-cinzel font-bold text-white mt-1">My Eternal Love Letter</h3>
           </div>
-          <p class="text-neutral-200 text-base md:text-lg leading-relaxed font-light italic">
-            "My dearest love, looking back at where we started—two stubborn kids in Grade 6 crossing arms across the hallway—to the endless lockdown phone calls, and finally asking you three times until you said yes... I realize every single moment was leading us right here."
+          <p class="text-neutral-200 text-base md:text-lg leading-relaxed font-light">
+            ඔයාට මතකද grade 9 වල balcony එකේ ඉඳන් මම මුලින්ම කැමතිද අහපු දවස? හරි ලස්සනයි නේ. තුන්වෙනි පාර නෙ මට කැමති කිව්වේ. කෝම හරි මාව රිජෙක්ට් කරලා රිජෙක්ට් කරලම අන්තිමට හා කිව්ව නේ.
           </p>
-          <p class="text-neutral-200 text-base md:text-lg leading-relaxed font-light italic">
-            "Even with strict rules keeping us apart today, my heart is right beside you. Thank you for three years of pure magic, laughter, and unconditional love. Happy 3rd Anniversary!"
+          <p class="text-neutral-200 text-base md:text-lg leading-relaxed font-light">
+            කොහොම හරි මෙච්චර දුර ආවනේ. කොච්චර ප්රශ්න ආවත්. හැමදාම මාත් එක්ක එකට හිටියට ඔයාට ගොඩක් thank uuu. මම හැමදාම, හැමදාම කියන්නේ මට පුළුවන් තරම් හැමදාම ඔයාගේ පිටි පස්සේ ඔයාට හයියක් වෙලා ඉන්නවා. ඔයාගේ dreams අනිවාර්යයෙන් ඔයාගේ ඉස්සරහටම ගෙනල්ලා දෙනවා. කොහොමහරි ඒකට ගොඩ යමු.
           </p>
-          <div class="pt-4 text-right font-sacramento text-4xl text-rose-400">
-            Forever Yours ❤️
+          <p class="text-neutral-200 text-base md:text-lg leading-relaxed font-light">
+            Thank uuu මාත් එක්ක මෙච්චර කාලයක් හිටියට. එහෙම කියන්න මට විශේෂ දෙයක් නම් නැහැ. මම ඔයාට ගොඩක් ආදරෙයි. ඉක්මනට හම්බ වෙමු. ඔයාට දෙන්න දෙයක් මේ හදිස්සියේ ගන්න විදික් නැහැ මට. 19 මට හම්බ වෙන්න බැනේ. ඒකයි මම මේක හදන්නේ.
+          </p>
+          <p class="text-neutral-200 text-base md:text-lg leading-relaxed font-light">
+            මම මේක හදන්න පටන් ගත්තේ anniversary එකට සති තුනක් තියලා. කමක් නැහැ මහන්සියක් නැහැ. මේ ඔක්කම ඔයාට.. මෙක අව්ල් ද දන්නෑ. ඒත් මේකේ මගේ මහන්සිය ගොඩක් තියෙනවා. මම හිතනවා ඔයා happy වෙයි කියලා මේක බලලා. happy anniversary bbuuuu...
+          </p>
+          <div class="pt-6 space-y-3 text-center">
+            <div class="inline-block px-4 py-2 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-lg font-bold tracking-wider animate-pulse shadow-lg shadow-rose-500/20">
+              💖💖💖 Lvuuuuuuu 💖💖💖
+            </div>
+            <div class="inline-block px-4 py-2 rounded-full bg-pink-500/15 border border-pink-500/30 text-pink-300 text-lg font-bold tracking-wider animate-bounce shadow-lg shadow-pink-500/20">
+              😚😚😚 ummmmmmmmhhhhh 😚😚😚
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
+    <!-- 4. Closing Enchanted Note (The Finale) -->
+    <section class="max-w-4xl mx-auto px-6 mt-36">
+      <div class="relative overflow-hidden rounded-3xl magic-card p-12 md:p-16 text-center shadow-2xl reveal-on-scroll">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-8">
+          <div class="w-20 h-20 mx-auto rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shadow-inner text-3xl animate-pulse">
+            💖
+          </div>
+
+          <h3 class="text-4xl md:text-6xl font-cinzel font-bold text-white tracking-wide">
+            Happy 3rd Anniversary
+          </h3>
+
+          <p class="text-neutral-200 text-xl leading-relaxed font-light max-w-2xl mx-auto">
+            Even though strict rules keep us apart today, no distance or barrier can ever diminish what we share. Thank you for being my rock, my joy, and my greatest adventure. I love you more than words can say.
+          </p>
+
+          <div class="pt-6">
+            <a href="https://ig.me/m/rumeth_thawasara" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 text-white font-medium text-base shadow-xl shadow-rose-500/30 hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20">
+              <span>✨ Send Virtual Hug & Kiss 💖</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
   </main>
