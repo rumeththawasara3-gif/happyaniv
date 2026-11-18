@@ -45,6 +45,41 @@ export default function App() {
 
   const galleryRef = useRef<HTMLDivElement>(null);
   const [isGalleryPaused, setIsGalleryPaused] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const getNextSaturday8AM = () => {
+      const now = new Date();
+      const result = new Date(now);
+      result.setHours(8, 0, 0, 0);
+      const dayOfWeek = now.getDay();
+      let daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
+      if (daysUntilSaturday === 0 && now.getHours() >= 8) {
+        daysUntilSaturday = 7;
+      }
+      result.setDate(now.getDate() + daysUntilSaturday);
+      return result.getTime();
+    };
+
+    const targetTime = getNextSaturday8AM();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const difference = targetTime - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        setTimeLeft({ days, hours, minutes, seconds });
+      }
+    };
+
+    updateCountdown();
+    const timerInterval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timerInterval);
+  }, []);
 
   const galleryPhotos = [
     "https://res.cloudinary.com/esbq4ewb/image/upload/f_auto,q_auto/IMG-20231219-WA0008",
@@ -668,6 +703,51 @@ export default function App() {
                 >
                   <Gift className="w-5 h-5" /> Send Virtual Hug & Kiss 💖
                 </button>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Sweet Countdown Timer Section */}
+        <section className="max-w-4xl mx-auto px-6 mt-36">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative overflow-hidden rounded-3xl bg-[#0f0f19]/80 backdrop-blur-2xl border border-rose-500/30 p-8 md:p-14 text-center shadow-2xl shadow-rose-950/40"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 space-y-6">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-semibold tracking-widest uppercase">
+                ⏳ Until We Meet Again
+              </span>
+              <h3 className="text-3xl md:text-5xl font-['Cinzel'] font-bold text-white tracking-wide">
+                Counting every second until I see you...
+              </h3>
+              <p className="text-neutral-300 text-base md:text-lg font-light max-w-xl mx-auto italic">
+                "No matter how many days or hours pass, my heart is always counting down the moments until I can hold you in my arms again."
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4">
+                <div className="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+                  <span className="block text-4xl md:text-5xl font-['Cinzel'] font-bold text-rose-300">{timeLeft.days}</span>
+                  <span className="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Days</span>
+                </div>
+                <div className="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+                  <span className="block text-4xl md:text-5xl font-['Cinzel'] font-bold text-rose-300">{timeLeft.hours}</span>
+                  <span className="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Hours</span>
+                </div>
+                <div className="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+                  <span className="block text-4xl md:text-5xl font-['Cinzel'] font-bold text-rose-300">{timeLeft.minutes}</span>
+                  <span className="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Minutes</span>
+                </div>
+                <div className="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+                  <span className="block text-4xl md:text-5xl font-['Cinzel'] font-bold text-rose-300">{timeLeft.seconds}</span>
+                  <span className="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Seconds</span>
+                </div>
               </div>
             </div>
           </motion.div>

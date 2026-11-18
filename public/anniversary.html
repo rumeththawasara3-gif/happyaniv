@@ -416,6 +416,45 @@
       </div>
     </section>
 
+    <!-- Sweet Countdown Timer Section -->
+    <section class="max-w-4xl mx-auto px-6 mt-36 reveal-on-scroll">
+      <div class="relative overflow-hidden rounded-3xl magic-card p-8 md:p-14 text-center shadow-2xl">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-6">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-semibold tracking-widest uppercase">
+            ⏳ Until We Meet Again
+          </span>
+          <h3 class="text-3xl md:text-5xl font-cinzel font-bold text-white tracking-wide">
+            Counting every second until I see you...
+          </h3>
+          <p class="text-neutral-300 text-base md:text-lg font-light max-w-xl mx-auto italic">
+            "No matter how many days or hours pass, my heart is always counting down the moments until I can hold you in my arms again."
+          </p>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4">
+            <div class="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+              <span id="cdDays" class="block text-4xl md:text-5xl font-cinzel font-bold text-rose-300">0</span>
+              <span class="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Days</span>
+            </div>
+            <div class="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+              <span id="cdHours" class="block text-4xl md:text-5xl font-cinzel font-bold text-rose-300">0</span>
+              <span class="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Hours</span>
+            </div>
+            <div class="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+              <span id="cdMinutes" class="block text-4xl md:text-5xl font-cinzel font-bold text-rose-300">0</span>
+              <span class="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Minutes</span>
+            </div>
+            <div class="bg-black/50 border border-rose-500/30 rounded-2xl p-4 shadow-inner">
+              <span id="cdSeconds" class="block text-4xl md:text-5xl font-cinzel font-bold text-rose-300">0</span>
+              <span class="text-xs text-neutral-400 uppercase tracking-widest mt-1 block">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="border-t border-rose-500/10 py-10 text-center text-xs text-neutral-500">
@@ -556,6 +595,47 @@
         }, 10000);
       }, 450);
     });
+
+    // Countdown Timer Logic to next Saturday at 8:00 AM
+    function getNextSaturday8AM() {
+      const now = new Date();
+      const result = new Date(now);
+      result.setHours(8, 0, 0, 0);
+      const dayOfWeek = now.getDay();
+      let daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
+      if (daysUntilSaturday === 0 && now.getHours() >= 8) {
+        daysUntilSaturday = 7;
+      }
+      result.setDate(now.getDate() + daysUntilSaturday);
+      return result.getTime();
+    }
+
+    const targetTime = getNextSaturday8AM();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetTime - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        const dEl = document.getElementById('cdDays');
+        const hEl = document.getElementById('cdHours');
+        const mEl = document.getElementById('cdMinutes');
+        const sEl = document.getElementById('cdSeconds');
+
+        if (dEl) dEl.innerText = days;
+        if (hEl) hEl.innerText = hours;
+        if (mEl) mEl.innerText = minutes;
+        if (sEl) sEl.innerText = seconds;
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
     // Passcode validation
     function handlePasscode(e) {
