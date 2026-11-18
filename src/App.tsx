@@ -302,7 +302,7 @@ export default function App() {
                 <motion.img 
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  src="/public/assets/aistudio/Gemini_Generated_Image__3_-removebg-preview_48486ef1.png" 
+                  src="https://res.cloudinary.com/esbq4ewb/image/upload/v1795029393/Gemini_Generated_Image__3_-removebg-preview.png" 
                   alt="Chapter 1 Illustration" 
                   className="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)]"
                 />
@@ -362,7 +362,7 @@ export default function App() {
                 <motion.img 
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                  src="/public/assets/aistudio/Gemini_Generated_Image__2_-removebg-preview_307a7f6b.png" 
+                  src="https://res.cloudinary.com/esbq4ewb/image/upload/v1795029394/Gemini_Generated_Image__2_-removebg-preview.png" 
                   alt="Chapter 2 Illustration" 
                   className="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)]"
                 />
@@ -384,7 +384,7 @@ export default function App() {
                 <motion.img 
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                  src="/public/assets/aistudio/Gemini_Generated_Image__1_-removebg-preview_aa3bde19.png" 
+                  src="https://res.cloudinary.com/esbq4ewb/image/upload/v1795029394/Gemini_Generated_Image__1_-removebg-preview.png" 
                   alt="Chapter 3 Illustration" 
                   className="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)]"
                 />
@@ -444,7 +444,7 @@ export default function App() {
                 <motion.img 
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 4.5 }}
-                  src="/public/assets/aistudio/Gemini_Generated_Image-removebg-preview_8ca95b7e.png" 
+                  src="https://res.cloudinary.com/esbq4ewb/image/upload/v1795029394/Gemini_Generated_Image-removebg-preview.png" 
                   alt="Chapter 4 Illustration" 
                   className="relative w-full max-h-[340px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)]"
                 />
